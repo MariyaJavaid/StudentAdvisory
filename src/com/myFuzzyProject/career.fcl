@@ -1,0 +1,244 @@
+/*
+	Example: A career calculation FIS (fuzzy inference system)
+	Calculates career based on personality traits
+
+	
+*/
+
+FUNCTION_BLOCK Careers// Block definition (there may be more than one block per file)
+
+VAR_INPUT				// Define input variables
+	extraversion : REAL;
+	openness : REAL;
+        emotionalrange :REAL;
+        Conscientiousness :REAL;
+        Agreeableness : REAL;
+        Challenge      :REAL;
+        Closeness :REAL;
+        Curiosity  :REAL;
+        Excitement  :REAL;
+        Harmony  :REAL;
+        Ideal  :REAL;
+        Liberty  :REAL;
+        Love  :REAL;
+        Practicality  :REAL;
+        Selfexpression  :REAL; 
+        Stability  :REAL;
+        Structure  :REAL;
+        Conservation  :REAL;
+        Opennesstochange  :REAL; 
+        Hedonism  :REAL;
+        Selfenhancement  :REAL; 
+        Selftranscendence  :REAL;
+END_VAR 
+     
+VAR_OUTPUT				// Define output variable
+	career : REAL;
+END_VAR
+
+FUZZIFY extraversion			// Fuzzify input variable 'extraversion': {'poor', 'good' , 'excellent'}
+	TERM poor := (0.1, 0.10) (0.10, 0.40) ; 
+	TERM good :=  (0.40,0.50) (0.50,0.60) (0.60, 0.70);
+	TERM excellent := (0.70, 0.80) (0.80, 1);
+END_FUZZIFY
+
+FUZZIFY openness			// Fuzzify input variable 'openness':{'poor', 'good' , 'excellent'}
+        TERM poor := (0.1, 0.10) (0.10, 0.40); 
+	TERM good := (0.40,0.50) (0.50,0.60) (0.60, 0.70);
+	TERM excellent := (0.70, 0.80) (0.80, 1);
+END_FUZZIFY
+
+FUZZIFY emotionalrange			// Fuzzify input variable 'emotional range': {'poor', 'good' , 'excellent'}
+        TERM poor := (0.1, 0.10) (0.10, 0.40) ; 
+	TERM good := (0.40,0.50) (0.50,0.60) (0.60, 0.70);
+	TERM excellent := (0.70, 0.80) (0.80,1);
+END_FUZZIFY
+
+FUZZIFY Conscientiousness			// Fuzzify input variable 'Conscientiousness': {'poor', 'good' , 'excellent'}
+	TERM poor := (0.1, 0.10) (0.10, 0.40) ; 
+	TERM good := (0.40,0.50) (0.50,0.60) (0.60, 0.70);
+	TERM excellent := (0.70, 0.80) (0.80, 1);
+END_FUZZIFY
+
+FUZZIFY Agreeableness			// Fuzzify input variable 'Agreeableness': {'poor', 'good' , 'excellent'}
+        TERM poor := (0.1, 0.10) (0.10, 0.40) ; 
+	TERM good := (0.40,0.50) (0.50,0.60) (0.60, 0.70);
+	TERM excellent := (0.70, 0.80) (0.80, 1);
+END_FUZZIFY
+
+FUZZIFY Challenge		// Fuzzify input variable 'Challenge': {'poor', 'good' , 'excellent'}
+        TERM poor := (0.1, 0.10) (0.10, 0.40) ; 
+	TERM good := (0.40,0.50) (0.50,0.60) (0.60, 0.70);
+	TERM excellent := (0.70, 0.80) (0.80, 1);
+END_FUZZIFY
+FUZZIFY Closeness		// Fuzzify input variable 'Challenge': {'poor', 'good' , 'excellent'}
+        TERM poor := (0.1, 0.10) (0.10, 0.40) ; 
+	TERM good := (0.40,0.50) (0.50,0.60) (0.60, 0.70);
+	TERM excellent := (0.70, 0.80) (0.80, 1);
+END_FUZZIFY
+FUZZIFY Curiosity			// Fuzzify input variable 'Curiosity': {'poor', 'good' , 'excellent'}
+        TERM poor := (0.1, 0.10) (0.10, 0.40) ; 
+	TERM good := (0.40,0.50) (0.50,0.60) (0.60, 0.70);
+	TERM excellent := (0.70, 0.80) (0.80, 1);
+END_FUZZIFY
+
+FUZZIFY Excitement			// Fuzzify input variable 'Excitement': {'poor', 'good' , 'excellent'}
+        TERM poor := (0.1, 0.10) (0.10, 0.40) ; 
+	TERM good := (0.40,0.50) (0.50,0.60) (0.60, 0.70);
+	TERM excellent := (0.70, 0.80) (0.80, 1);
+END_FUZZIFY
+
+FUZZIFY Harmony			// Fuzzify input variable 'Harmony': {'poor', 'good' , 'excellent'}
+        TERM poor := (0.1, 0.10) (0.10, 0.40) ; 
+	TERM good := (0.40,0.50) (0.50,0.60) (0.60, 0.70);
+	TERM excellent := (0.70, 0.80) (0.80, 1);
+END_FUZZIFY
+
+FUZZIFY Ideal			// Fuzzify input variable 'Ideal': {'poor', 'good' , 'excellent'}
+        TERM poor := (0.1, 0.10) (0.10, 0.40) ; 
+	TERM good := (0.40,0.50) (0.50,0.60) (0.60, 0.70);
+	TERM excellent := (0.70, 0.80) (0.80, 1);
+END_FUZZIFY
+
+FUZZIFY Liberty			// Fuzzify input variable 'Liberty': {'poor', 'good' , 'excellent'}
+        TERM poor := (0.1, 0.10) (0.10, 0.40) ; 
+	TERM good := (0.40,0.50) (0.50,0.60) (0.60, 0.70);
+	TERM excellent := (0.70, 0.80) (0.80, 1);
+END_FUZZIFY
+
+FUZZIFY Love			// Fuzzify input variable 'Love': {'poor', 'good' , 'excellent'}
+        TERM poor := (0.1, 0.10) (0.10, 0.40) ; 
+	TERM good := (0.40,0.50) (0.50,0.60) (0.60, 0.70);
+	TERM excellent := (0.70, 0.80) (0.80, 1);
+END_FUZZIFY
+
+FUZZIFY Practicality		// Fuzzify input variable 'Practicality': {'poor', 'good' , 'excellent'}
+        TERM poor := (0.1, 0.10) (0.10, 0.40) ; 
+	TERM good := (0.40,0.50) (0.50,0.60) (0.60, 0.70);
+	TERM excellent := (0.70, 0.80) (0.80, 1);
+END_FUZZIFY
+FUZZIFY Selfexpression		// Fuzzify input variable 'SSelf-expression': {'poor', 'good' , 'excellent'}
+         TERM poor := (0.1, 0.10) (0.10, 0.40) ; 
+	TERM good := (0.40,0.50) (0.50,0.60) (0.60, 0.70);
+	TERM excellent := (0.70, 0.80) (0.80, 1);
+END_FUZZIFY
+
+FUZZIFY Stability 			// Fuzzify input variable 'Stability ': {'poor', 'good' , 'excellent'}
+TERM poor := (0.1, 0.10) (0.10, 0.40) ; 
+	TERM good := (0.40,0.50) (0.50,0.60) (0.60, 0.70);
+	TERM excellent := (0.70, 0.80) (0.80, 1);
+END_FUZZIFY
+
+FUZZIFY Structure 			// Fuzzify input variable 'Structure ': {'poor', 'good' , 'excellent'}
+TERM poor := (0.1, 0.10) (0.10, 0.40) ; 
+	TERM good := (0.40,0.50) (0.50,0.60) (0.60, 0.70);
+	TERM excellent := (0.70, 0.80) (0.80, 1);
+END_FUZZIFY
+
+FUZZIFY Conservation 			// Fuzzify input variable 'Conservation ': {'poor', 'good' , 'excellent'}
+        TERM poor := (0.1, 0.10) (0.10, 0.40) ; 
+	TERM good := (0.40,0.50) (0.50,0.60) (0.60, 0.70);
+	TERM excellent := (0.70, 0.80) (0.80, 1);
+END_FUZZIFY
+
+
+FUZZIFY Opennesstochange 			// Fuzzify input variable 'Openness to change ': {'poor', 'good' , 'excellent'}
+        TERM poor := (0.1, 0.10) (0.10, 0.40) ; 
+	TERM good := (0.40,0.50) (0.50,0.60) (0.60, 0.70);
+	TERM excellent := (0.70, 0.80) (0.80, 1);
+END_FUZZIFY
+
+
+FUZZIFY Hedonism 			// Fuzzify input variable 'Hedonism  ': {'poor', 'good' , 'excellent'}
+TERM poor := (0.1, 0.10) (0.10, 0.40) ; 
+	TERM good := (0.40,0.50) (0.50,0.60) (0.60, 0.70);
+	TERM excellent := (0.70, 0.80) (0.80, 1);
+END_FUZZIFY
+
+
+FUZZIFY Selfenhancement  			// Fuzzify input variable 'Self-enhancement ': {'poor', 'good' , 'excellent'}
+TERM poor := (0.1, 0.10) (0.10, 0.40) ; 
+	TERM good := (0.40,0.50) (0.50,0.60) (0.60, 0.70);
+	TERM excellent := (0.70, 0.80) (0.80, 1);
+END_FUZZIFY
+
+FUZZIFY Selftranscendence  			// Fuzzify input variable 'Self-transcendence ': {'poor', 'good' , 'excellent'}
+TERM poor := (0.1, 0.10) (0.10, 0.40) ; 
+	TERM good := (0.40,0.50) (0.50,0.60) (0.60, 0.70);
+	TERM excellent := (0.70, 0.80) (0.80, 1);
+END_FUZZIFY
+
+
+
+DEFUZZIFY career			// Defzzzify output variable 'career' : {'artist', 'average', 'psychologist' }
+	TERM HealthcareAndMedical :=(0,0) (5,1) (10,0);
+        TERM Engineering := (10,0) (15,1) (20,0); 
+        TERM SocialSciences := (21,0) (25,1) (30,0) ;
+	TERM business:= (31,0) (35,1) (40,0) ;
+        TERM ArchitecturePlanningEnvironmentalDesign  := (41,0) (45,1) (50,0) ;
+        TERM ArtsLiteratureEntertainment  := (51,0) (55,1) (60,0)  ;
+        TERM Education  := (61,0) (65,1) (70,0) ;
+        TERM Technology  := (71,0) (75,1) (80,0) ;
+        TERM Sports := (81,0) (85,1) (90,0) ;
+        TERM LawPublicPolicy := (91,0) (95,1) (100,0) ;
+        TERM NaturalSciences := (101,0) (105,1) (110,0) ;
+        TERM Communications := (111,0) (115,1) (120,0) ;
+        TERM Government := (121,0) (125,1) (130,0) ;
+
+	METHOD : COG;		// Use 'Center Of Gravity' defuzzification method
+	DEFAULT := 0;		// Default value is 0 (if no rule activates defuzzifier)
+END_DEFUZZIFY
+
+RULEBLOCK No1
+	AND : MIN;			// Use 'min' for 'and' (also implicit use 'max' for 'or' to fulfill DeMorgan's Law)
+	ACT : MIN;			// Use 'min' activation method
+	ACCU : MAX;			// Use 'max' accumulation method
+
+//Rule 1 for Medical Profession
+
+	RULE 1 :IF extraversion IS good AND openness IS excellent AND emotionalrange is poor AND Conscientiousness is excellent AND Agreeableness is excellent AND Challenge is excellent AND Closeness is good AND Curiosity is excellent AND Excitement is good AND Harmony is excellent AND Ideal is good AND Liberty is good AND Love is good AND Practicality is excellent AND Selfexpression is good AND Stability  is excellent AND Structure is excellent AND Conservation is good AND Opennesstochange is good AND Hedonism is good AND Selfenhancement is excellent AND Selftranscendence is excellent THEN career IS HealthcareAndMedical;
+
+//Rule 2 for Engineering Profession
+
+	RULE 2 :IF extraversion IS good AND openness IS excellent AND emotionalrange is poor AND Conscientiousness is excellent AND Agreeableness is good AND Challenge is excellent AND Closeness is excellent AND Curiosity is excellent AND Excitement is excellent AND Harmony is good AND Ideal is good AND Liberty is excellent AND Love is good AND Practicality is excellent AND Selfexpression is excellent AND Stability  is good AND Structure is excellent AND Conservation is poor AND Opennesstochange is excellent AND Hedonism is good AND Selfenhancement is excellent AND Selftranscendence is good THEN career IS Engineering;
+
+//Rule 3 for Social Sciences
+
+	RULE 3 : IF extraversion IS poor  AND openness IS good AND emotionalrange is poor AND Conscientiousness is poor AND Agreeableness is good AND Challenge is excellent AND Closeness is good AND Curiosity is good AND Excitement is good AND Harmony is good AND Ideal is good AND Liberty is good AND Love is good AND Practicality is excellent AND Selfexpression is excellent AND Stability  is good AND Structure is excellent AND Conservation is poor AND Opennesstochange is excellent AND Hedonism is good AND Selfenhancement is good AND Selftranscendence is good THEN career IS SocialSciences;
+
+//Rule 4 for Business
+
+        RULE 4 :IF extraversion IS good AND openness IS  good AND emotionalrange is poor AND Conscientiousness is excellent AND Agreeableness is good AND Challenge is excellent AND Closeness is poor AND Curiosity is excellent AND Excitement is good AND Harmony is excellent AND Ideal is good AND Liberty is good AND Love is excellent AND Practicality is good AND Selfexpression is good AND Stability is excellent AND Structure is excellent AND Conservation is good AND Opennesstochange is good AND Hedonism is good AND Selfenhancement is excellent AND Selftranscendence is excellent THEN career IS business ;
+
+//Rule 5 for ArchitecturePlanningEnvironmentalDesign
+
+       RULE 5 :IF extraversion IS good AND openness IS  good AND emotionalrange is good AND Conscientiousness is excellent AND Agreeableness is excellent AND Challenge is good AND Closeness is excellent AND Curiosity is excellent AND Excitement is good AND Harmony is good AND Ideal is good AND Liberty is excellent AND Love is poor AND Practicality is excellent AND Selfexpression is excellent AND Stability is excellent AND Structure is excellent AND Conservation is good AND Opennesstochange is good AND Hedonism is good AND Selfenhancement is poor AND Selftranscendence is good THEN career IS ArchitecturePlanningEnvironmentalDesign ;
+//Rule 6 for ArtsLiteratureEntertainment
+
+        RULE 6 :IF extraversion IS good AND openness IS  good AND emotionalrange is good AND Conscientiousness is excellent AND Agreeableness is excellent AND Challenge is excellent AND Closeness is good AND Curiosity is excellent AND Excitement is excellent AND Harmony is excellent AND Ideal is good AND Liberty is excellent AND Love is excellent AND Practicality is excellent AND Selfexpression is excellent AND Stability is excellent AND Structure is good AND Conservation is poor AND Opennesstochange is excellent AND Hedonism is excellent AND Selfenhancement is excellent AND Selftranscendence is excellent THEN career IS ArtsLiteratureEntertainment ;
+//Rule 7 for Education
+
+        RULE 7 :IF extraversion IS good AND openness IS  excellent AND emotionalrange is good AND Conscientiousness is good AND Agreeableness is excellent AND Challenge is excellent AND Closeness is good AND Curiosity is excellent AND Excitement is good AND Harmony is excellent AND Ideal is good AND Liberty is good AND Love is good AND Practicality is excellent AND Selfexpression is excellent AND Stability is good AND Structure is good AND Conservation is good AND Opennesstochange is good AND Hedonism is poor AND Selfenhancement is excellent AND Selftranscendence is excellent THEN career IS Education ;
+//Rule 8 for Technology
+
+        RULE 8 :IF extraversion IS good AND openness IS  excellent AND emotionalrange is good AND Conscientiousness is excellent AND Agreeableness is good AND Challenge is excellent AND Closeness is good AND Curiosity is excellent AND Excitement is excellent AND Harmony is good AND Ideal is good AND Liberty is good AND Love is good AND Practicality is excellent AND Selfexpression is excellent AND Stability is good AND Structure is excellent AND Conservation is poor AND Opennesstochange is excellent AND Hedonism is poor AND Selfenhancement is excellent AND Selftranscendence is good THEN career IS Technology ;
+//Rule 9 for Sports
+
+        RULE 9 :IF extraversion IS good AND openness IS  excellent AND emotionalrange is poor AND Conscientiousness is good AND Agreeableness is good AND Challenge is excellent AND Closeness is good AND Curiosity is good AND Excitement is good AND Harmony is good AND Ideal is good AND Liberty is good AND Love is good AND Practicality is good AND Selfexpression is good AND Stability is good AND Structure is good AND Conservation is poor AND Opennesstochange is good AND Hedonism is good AND Selfenhancement is good AND Selftranscendence is good THEN career IS Sports ;
+//Rule 10 for LawPublicPolicy
+
+        RULE 10 :IF extraversion IS excellent AND openness IS  good AND emotionalrange is good AND Conscientiousness is excellent AND Agreeableness is poor AND Challenge is excellent AND Closeness is good AND Curiosity is excellent AND Excitement is good AND Harmony is excellent AND Ideal is good AND Liberty is excellent AND Love is good AND Practicality is excellent AND Selfexpression is excellent AND Stability is excellent AND Structure is good AND Conservation is good AND Opennesstochange is excellent AND Hedonism is excellent AND Selfenhancement is excellent AND Selftranscendence is excellent THEN career IS LawPublicPolicy ;
+//Rule 11 for NaturalSciences
+
+        RULE 11 :IF extraversion IS good AND openness IS  excellent AND emotionalrange is poor AND Conscientiousness is good AND Agreeableness is good AND Challenge is excellent AND Closeness is good AND Curiosity is good AND Excitement is good AND Harmony is good AND Ideal is good AND Liberty is good AND Love is good AND Practicality is good AND Selfexpression is good AND Stability is good AND Structure is good AND Conservation is poor AND Opennesstochange is good AND Hedonism is good AND Selfenhancement is good AND Selftranscendence is good THEN career IS NaturalSciences ;
+
+//Rule 12 for Communications
+
+        RULE 12 :IF extraversion IS good AND openness IS  excellent AND emotionalrange is poor AND Conscientiousness is good AND Agreeableness is good AND Challenge is excellent AND Closeness is good AND Curiosity is good AND Excitement is good AND Harmony is good AND Ideal is good AND Liberty is good AND Love is good AND Practicality is good AND Selfexpression is good AND Stability is good AND Structure is good AND Conservation is poor AND Opennesstochange is good AND Hedonism is good AND Selfenhancement is good AND Selftranscendence is good THEN career IS Communications ;
+//Rule 13 for Government
+
+        RULE 13 :IF extraversion IS good AND openness IS  excellent AND emotionalrange is poor AND Conscientiousness is good AND Agreeableness is good AND Challenge is excellent AND Closeness is good AND Curiosity is good AND Excitement is good AND Harmony is good AND Ideal is good AND Liberty is good AND Love is good AND Practicality is good AND Selfexpression is good AND Stability is good AND Structure is good AND Conservation is poor AND Opennesstochange is good AND Hedonism is good AND Selfenhancement is good AND Selftranscendence is good THEN career IS Government ;
+END_RULEBLOCK
+
+
+END_FUNCTION_BLOCK
